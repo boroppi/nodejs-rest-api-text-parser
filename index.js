@@ -1,9 +1,137 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+
 const app = express();
 
-app.use(bodyParser.text({ type: "text/html" }));
+const email2 = `https://intra.esmt.myit.its.gov.on.ca/arsys/forms/intra-app-esmt.cihs.ad.gov.on.ca/SHR%3ALandingConsole?mode=search&F304255500=WOI%3AWorkOrder&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610='1000000182'%3D%22WO0000001708026%22
+
+Your Support Group has been assigned Work Order WO0000001708026. Please review the request.
+
+Client Name: Edmond So
+
+Location: 5775 YONGE STREET FLOOR 4
+
+Summary: ITS - Administrative Account Management Service (AAMS)
+
+Description: Ordered on: Jan 31, 2019 7:38:44 PM
+
+Approved by:
+Name: Obias, Joven (MCCSS)
+Email: Joven.Obias2@ontario.ca
+Approved at: Feb 01, 2019 4:27:36 PM
+
+Requester:
+Name: So, Edmond (MCCSS)
+Email: Edmond.So@ontario.ca
+Phone: (416) 212-3273
+Title: Senior Middleware Specialist
+Section: Middleware and Operations Services
+Branch: I&IT Operations
+Division: Children, Youth and Social Services I&IT Cluster
+Organization: Ministry of Community and Social Services
+
+Recipient:
+Name: So, Edmond (MCCSS)
+Email: Edmond.So@ontario.ca
+Phone: (416) 212-3273
+Title: Senior Middleware Specialist
+Section: Middleware and Operations Services
+Branch: I&IT Operations
+Division: Children, Youth and Social Services I&IT Cluster
+Organization: Ministry of Community and Social Services
+
+Item requested: Server - Administrative Account Management Service (AAMS)
+Request type: Add Access
+
+Request details:
+Cluster Name: Children, Youth & Social Services Cluster (CYSSC)
+Role: UnixFullAdmin
+Server(s) to be added: cysvigdcapmdw01, cysvigdcapmdw02, cysvigdcdbora20, cysvogdcwhweb15, cysvigdcapmdw78, cysvogdcwhweb09, cysvigdcwhweb14, cysvigdcapmdw54, cysvigdcapmdw55, cysvigdcapmdw56, cysvogdcwhweb12, cysvogdcwhweb18, cysvigdcapmdw40, cysvigdcapmdw41, cysvigdcapmdw44, cysvigdcapmdw45, cysvigdcdbora34, cysvigdcapmdw42, cysvigdcapmdw43, cysvogdcwhweb10, cysvogdcwhweb11, cysvigdcwhweb15, cysvigdcwhweb16, cysvigdcapmdw04, cysvigdcapmdw59, cysvigdcapmdw60, cysvogdcwhweb16, cysvogdcwhweb17, cysvigdcwhweb06, cysvigdcwhweb10, cysvigdcdbora48, cysvigdcdbora49, cysvigdcdbora50, cysbigdcapmdw40, cysbigdcapmdw41, cysbigdcapmdw44, cysbigdcapmdw45, cysbigdcapmdw46, cysbigdcapmdw47, cysbigdcapmdw42, cysbigdcapmdw43, cysbigdcapmdw59, cysbigdcapmdw60, cysbigdcwhweb13, cysbigdcwhweb14, cysbigdcdbora08, cysbigdcdbora39, cysbigdcdbora40
+User(s) to be added: So, Edmond (MCCSS), Vanderstoop, Mike (MCCSS)
+
+Payment Details:
+Cost: $285.00
+Cost Centre: 007 070203 8561 193672
+
+View in ONRequest: https://intra.myit.esm.tbs.gov.on.ca/ONRequest/Request/6653`;
+
+const email = `From: eSMT (MGCS)
+Sent: February-01-19 12:01 PM
+To: @eSMT-L-ESM-ITS-DCO-TOOLS <eSMT-L-ESM-ITS-DCO-TOOLS@msgov.gov.on.ca>
+Subject: Your Support Group has been assigned Work Order WO0000001707489. Please
+review the request.
+
+
+
+https://intra.esmt.myit.its.gov.on.ca/arsys/forms/intra-app-esmt.cihs.ad.gov.on.ca/SHR%3ALandingConsole?mode=search&F304255500=WOI%3AWorkOrder&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610='1000000182'%3D%22WO0000001707489%22
+[https://intra.esmt.myit.its.gov.on.ca/arsys/forms/intra-app-esmt.cihs.ad.gov.on.ca/SHR%3ALandingConsole?mode=search&F304255500=WOI%3AWorkOrder&F1000000076=FormOpen&F303647600=SearchTicketWithQual&F304255610='1000000182'%3D%22WO0000001707489%22]
+
+Your Support Group has been assigned Work Order WO0000001707489. Please review
+the request.
+
+Client Name: Jack Xu
+
+Location: 125 SIR WILLIAM HEARST AVENUE FLOOR 2
+
+Summary: ITS - Administrative Account Management Service (AAMS)
+
+Description: Ordered on: Feb 01, 2019 11:48:58 AM
+
+Approved by:
+Name: Singh, Udai (MTO)
+Email: Udai.Singh@ontario.ca
+Approved at: Feb 01, 2019 11:59:44 AM
+
+Requester:
+Name: Xu, Jack (MTO)
+Email: Jack.Xu@ontario.ca
+Phone: (416) 235-3871
+Title: DBA (Oracle/DB2)
+Section: Solutions Delivery
+Branch: Road User Safety Solutions
+Division: Labour and Transportation I&IT Cluster
+Organization: Ministry of Transportation
+
+Recipient:
+Name: Xu, Jack (MTO)
+Email: Jack.Xu@ontario.ca
+Phone: (416) 235-3871
+Title: DBA (Oracle/DB2)
+Section: Solutions Delivery
+Branch: Road User Safety Solutions
+Division: Labour and Transportation I&IT Cluster
+Organization: Ministry of Transportation
+
+Item requested: Server - Administrative Account Management Service (AAMS)
+Request type: Add Access
+
+Request details:
+Cluster Name: Labour and Transportation Cluster (LTC)
+Role: UnixNearAdmin
+Server(s) to be added: ltcbigdcapmdw69
+User(s) to be added: Xu, Jack (MTO)
+
+Payment Details:
+Cost: $285.00
+Cost Centre: 027 270501 2591 906552
+
+View in ONRequest: https://intra.myit.esm.tbs.gov.on.ca/ONRequest/Request/6683
+
+Contact Information
+
+OPS IT Service Desk (24/7)
+(888) 677-4873 (toll free) •(416) 246-7171 (GTA)
+Adaptive Technology Services (TTY) - (877) 889-4873
+email: opssd@ontario.ca 
+
+This e-mail was auto-generated by
+
+eSMT [cid:esmt.png]`;
+
+app.use(bodyParser.text({
+  type: "text/html"
+}));
 
 app.get("/", (req, res) => {
   console.log("Responding to root route");
@@ -12,9 +140,9 @@ app.get("/", (req, res) => {
 
 // parse email
 app.post("/api/parse_email", (req, res) => {
-  console.log(req.body);
 
-  res.send(req.body);
+
+  res.send(parseEmail(email2));
 });
 
 app.get("/api/workorders", (req, res) => {
@@ -22,7 +150,6 @@ app.get("/api/workorders", (req, res) => {
     id: "1",
     order: "ON124124"
   };
-
   res.send(workorders);
 });
 
@@ -31,3 +158,55 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is up and listening on port: ${port}...`);
 });
+
+function parseEmail(email) {
+  // Initialize empty object to be filled later
+  let json = {};
+
+  // Workorder
+  const workorder_expr = /Work Order.([^\.]*)/;
+  let workorder = workorder_expr.exec(email)[1];
+  json.workorder = workorder;
+
+  // Approved by
+  const approved_by_name_expr = /Approved by:[\n\r].*Name:\s*([^\n\r]*)/;
+  const approved_by_email_expr = /Approved by:[\n\r].*[\n\r]*Email:\s*([^\n\r]*)/;
+  let approved_by_name = approved_by_name_expr.exec(email)[1];
+  let approved_by_email = approved_by_email_expr.exec(email)[1];
+  json.approvedBy = {};
+  json.approvedBy.approvedByName = approved_by_name;
+  json.approvedBy.approvedByEmail = approved_by_email;
+
+  // Requester
+  const requester_name_expr = /Requester:[\n\r].*Name:\s*([^\n\r]*)/;
+  const requester_email_expr = /Requester:[\n\r].*[\n\r]*Email:\s*([^\n\r]*)/;
+  json.requester = {};
+  json.requester.requesterName = requester_name_expr.exec(email)[1];
+  json.requester.requesterEmail = requester_email_expr.exec(email)[1];
+
+  // Item requested
+  const item_requested_expr = /\s*Item requested:\s*([^\n\r]*)/
+  json.itemRequested = item_requested_expr.exec(email)[1];
+
+  // Request type
+  const request_type_expr = /\s*Request type:\s*([^\n\r]*)/
+  json.requestType = request_type_expr.exec(email)[1];
+
+  // Request details
+  const cluster_name_expr = /\s*Cluster Name:\s*([^\n\r]*)/
+  const role_expr = /\s*Role:\s*([^\n\r]*)/
+  const servers_expr = /\s*Server\(s\) to be added:\s*([^\n\r]*)/
+  const users_expr = /\s*User\(s\) to be added:\s*([^\n\r]*)/
+  json.requestDetails = {};
+  json.requestDetails.clusterName = cluster_name_expr.exec(email)[1];
+  json.requestDetails.role = role_expr.exec(email)[1];
+  json.requestDetails.servers = servers_expr.exec(email)[1].split(',');
+  json.requestDetails.users = users_expr.exec(email)[1];
+
+  //Payment details
+  const cost_centre = /\s*Cost Centre:\s*([^\n\r]*)/
+  json.paymentDetails = {};
+  json.paymentDetails.costCentre = cost_centre.exec(email)[1];
+
+  return json;
+}
