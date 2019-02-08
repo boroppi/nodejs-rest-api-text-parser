@@ -90,7 +90,7 @@ function generateInsertScript(object) {
 
   for (var server of object.requestDetails.servers) {
     for (var user of object.requestDetails.users) {
-      script += `INSERT INTO [dbo].[Process] ([server],[user_name],[role],[action]) VALUES ('${server}}','${user}','${role}','ADD');\n`
+      script += `INSERT INTO [dbo].[Process] ([server],[user_name],[role],[action]) VALUES ('${server}','${user}','${role}','ADD');\n`
     }
   }
 
