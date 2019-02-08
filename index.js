@@ -51,22 +51,28 @@ function parseEmail(email) {
   json.requester.requesterEmail = requester_email_expr.exec(email)[1];
 
   // Item requested
-  const item_requested_expr = /\s*Item requested:\s*([^\n\r]*)/
+  const item_requested_expr = /\s*Item requested:\s*([^\n\r]*)/;
   json.itemRequested = item_requested_expr.exec(email)[1];
 
   // Request type
-  const request_type_expr = /\s*Request type:\s*([^\n\r]*)/
+  const request_type_expr = /\s*Request type:\s*([^\n\r]*)/;
   json.requestType = request_type_expr.exec(email)[1];
 
   // Request details
-  const cluster_name_expr = /\s*Cluster Name:\s*([^\n\r]*)/
-  const role_expr = /\s*Role:\s*([^\n\r]*)/
-  const servers_expr = /\s*Server\(s\) to be added:\s*([^\n\r]*)/
-  const users_expr = /\s*User\(s\) to be added:\s*([^\n\r]*)/
+  const cluster_name_expr = /\s*Cluster Name:\s*([^\n\r]*)/;
+  const role_expr = /\s*Role:\s*([^\n\r]*)/;
+  //const servers_expr = /\s*Server\(s\) to be added:\s*([^\n\r]*)/
+  const servers_expr = /\s*Server\(s\) to be added:[\s\w,]*(?=\nUser)/;
+  const users_expr = /\s*User\(s\) to be added:\s*([^\n\r]*)/;
   json.requestDetails = {};
   json.requestDetails.clusterName = cluster_name_expr.exec(email)[1];
   json.requestDetails.role = role_expr.exec(email)[1];
-  json.requestDetails.servers = servers_expr.exec(email)[1].split(/\s*,\s*/);
+  let servers = servers_expr.exec(email)[0];
+  servers = servers.split(/\s*Server\(s\) to be added:\s*/)[1];
+  servers = servers.split(/\s*,\s*/);
+  console.log(servers);
+  //servers = servers.split(/\s*Server\(s\) to be added:\s*/);
+  json.requestDetails.servers = servers;
   let users = users_expr.exec(email)[1];
   users = users.split(/(?<=\))\,\s/);
   json.requestDetails.users = users;
