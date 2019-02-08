@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 // parse email
 app.post("/api/parse_email", (req, res) => {
   console.log(parseEmail(req.body));
-  //res.send(parseEmail(email2));
+  res.send(parseEmail(req.body));
 });
 
 // localhost:3003
@@ -66,7 +66,11 @@ function parseEmail(email) {
   json.requestDetails.clusterName = cluster_name_expr.exec(email)[1];
   json.requestDetails.role = role_expr.exec(email)[1];
   json.requestDetails.servers = servers_expr.exec(email)[1].split(/\s*,\s*/);
-  json.requestDetails.users = users_expr.exec(email)[1];
+  let users = users_expr.exec(email)[1];
+  users = users.split(/(?<=\))\,\s/);
+  json.requestDetails.users = users;
+
+
 
   //Payment details
   const cost_centre = /\s*Cost Centre:\s*([^\n\r]*)/
