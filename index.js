@@ -14,8 +14,9 @@ app.get("/", (req, res) => {
 
 // parse email
 app.post("/api/parse_email", (req, res) => {
-  console.log(parseEmail(req.body));
-  res.send(parseEmail(req.body));
+  let object = parseEmail(req.body);
+  let script = generateInsertScript(object)
+  res.send(script);
 });
 
 // localhost:3003
@@ -70,12 +71,28 @@ function parseEmail(email) {
   users = users.split(/(?<=\))\,\s/);
   json.requestDetails.users = users;
 
-
-
   //Payment details
   const cost_centre = /\s*Cost Centre:\s*([^\n\r]*)/
   json.paymentDetails = {};
   json.paymentDetails.costCentre = cost_centre.exec(email)[1];
 
   return json;
+}
+
+
+function generateInsertScript(object) {
+
+  var script = "";
+
+  let {
+    role
+  } = object.requestDetails;
+
+  for (var server of object.requestDetails.servers) {
+    for (var user of object.requestDetails.users) {
+      script += `INSERT INTO [dbo].[Process] ([server],[user_name],[role],[action]) VALUES ('${server}}','${user}','${role}','ADD');\n`
+    }
+  }
+
+  return script;
 }
