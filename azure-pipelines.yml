@@ -17,5 +17,5 @@ steps:
 
 - script: |
     npm install
-    npm run build
+    node index.js > stdout.txt 2> stderr.txt &
   displayName: 'npm install and build'
